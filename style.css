@@ -1,0 +1,51 @@
+
+p{
+	font-family: arial;
+	font-size: 23px;
+	background-color: #F5F5F0;
+	color: black;
+	text-align: left;
+	padding: 10px;
+	margin-bottom: 0px;
+	width: 200px;
+}
+input[type=text]{
+	background-color: white;
+	color:  #E6E6D9;
+	display: block;
+	margin: auto;
+	padding: 10px;	
+	width: 200px;
+	border: 1px solid #EBEBE0;
+	border-radius: 6px;
+
+}
+input[type=checkbox]{
+	margin: 10px;	
+}
+input[type=sign_in]{
+	font-style: sans-serif;
+	background-color: blue;
+	color: white;
+	display: block;
+	margin: auto;
+	padding: 10px;
+	width: 200px;
+	text-align: center;
+	font-size: 18;
+	border: 1px solid #EBEBE0;
+	border-radius: 6px;
+	}
+input[type=sign_in]:hover{
+	background-color: #cce6ff;
+	color:  #00004d;
+	border: 1px solid blue;
+}
+div{
+    margin: auto;
+	display: block;
+	width: 200px;
+}
+body{
+	background-color: #F5F5F0;
+}
