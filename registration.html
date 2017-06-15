@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hello, Julia</title>
+	<link rel="stylesheet" type="text/css" href="registrationStyle.css">
+</head>
+<body>
+	<div class="header">
+		<ul>
+	  		<li><a href="index.html">Home</a></li>
+	  		<li><a class="active" href="registration.html">Registration</a></li>
+	  		<li><a href="login.html">Login</a></li>
+	  		<li style="float:right">
+	  			<input class="searchButton" type="button" value="Search"> 
+	  			<input class="searchInput"  type="text" name="search" placeholder="Search..">
+			</li>
+		</ul>
+	</div>
+	<div>
+
+		<form class="authForm" action="/action_page.php">
+			<div class="regFormPadding">
+			 	<input type="text" id="loginR" name="login" placeholder="Login">
+			 	<span id="loginErrorTextRegistration" class="errorText hidden"></span>
+			</div>
+			<div class="regFormPadding">
+			 	<input type="text" id="emailR" name="email" placeholder="Email address">
+			 	<span id="emailRErrorTextRegistration" class="errorText hidden"></span>
+			</div>
+			<div class="regFormPadding">
+			 	<input type="text" id="passwordR" name="password" placeholder="Password">
+			 	<span id="passwordRErrorTextRegistration" class="errorText hidden"></span>
+			</div>
+			<div class="regFormPadding">
+			 	<input type="text" id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
+			 	<span id="confirmPasswordErrorTextRegistration" class="errorText hidden"></span>
+			</div>
+			<div class="regFormPadding">
+			 	<input type="button" id="signUp" value="Sign up">
+			</div>
+  		</form>
+	</div>
+	
+</body>
+</html>
