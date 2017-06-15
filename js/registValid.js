@@ -15,13 +15,24 @@ for(var key in data.names){
 }
 console.log(data.elements.login);
 
-data.elements.login.onchange = function(){
-	if(data.elements.login.value.length < 3){
-		data.elements.loginError.classList.remove("hidden");
-		data.elements.loginError.innerHTML = "This name is too short";
-	}
-	else{
-			data.elements.loginError.className += " hidden";
-			data.elements.loginError.innerHTML = "";
+function Validation(){
+	this.events = ["onchange", "onkeyup", "onkeydown"];
+	this.minValue = function(element, minLength, errorElement){
+		for(var i = 0; i < this.events.length; i++){
+			element[this.events[i]] = function(){
+				if(element.value.length < 3){
+					errorElement.classList.remove("hidden");
+					errorElement.innerHTML = "This name is too short";
+				}
+				else{
+					errorElement.className += " hidden";
+					errorElement.innerHTML = "";
+				}
+			}
+		}
 	}
 }
+
+var validObj = new Validation();
+validObj.minValue(data.elements.login, 3, data.elements.loginError);
+	
