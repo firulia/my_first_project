@@ -22,6 +22,6 @@ for (var i = 10; i >= 0; i--) {
 	if(i == 0){
 //		alert("Boom");
 	}
-	else
+	//else
 //		alert(i);
 }
