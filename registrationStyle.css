@@ -68,7 +68,18 @@ body{
 
 input[type=text]{
 	background-color: white;
-	color:  #E6E6D9;
+	color:  black;
+	display: block;
+	margin: auto;
+	padding: 10px;	
+	width: 200px;
+	border: 1px solid #EBEBE0;
+	border-radius: 6px;
+}
+
+input[type=password]{
+	background-color: white;
+	color:  black;
 	display: block;
 	margin: auto;
 	padding: 10px;	
@@ -106,4 +117,11 @@ div{
 }
 body{
 	background-color: #F5F5F0;
+}
+
+.error{
+	border: 2px solid  #ffb3b3 !important;
+}
+span{
+	color: #ffb3b3;
 }

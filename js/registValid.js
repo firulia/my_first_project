@@ -1,38 +1,72 @@
 var data = {
-		names:{
+		names:{ //ids für Validation
 	        login: "loginR",
 			email: "emailR",
 			password: "passwordR",
 			confirmPassword: "confirmPassword",
-			loginError: "loginErrorTextRegistration"
+			loginError: "loginErrorTextRegistration",
+			passwordError: "passwordRErrorTextRegistration",
+			confirmPasswordError: "confirmPasswordErrorTextRegistration",
+			emailError: "emailRErrorTextRegistration"
 		},
-		elements: {}
+		elements: {} //hier werden Objekte aus HTML hinzufügt
 };
-
-console.log(data);
+//hier füge ich Objekte hinzu
 for(var key in data.names){
 	data.elements[key] = document.getElementById(data.names[key]);
 }
-console.log(data.elements.login);
 
-function Validation(){
+/**
+ * also Validation
+ */
+function Validation(){ 
 	this.events = ["onchange", "onkeyup", "onkeydown"];
-	this.minValue = function(element, minLength, errorElement){
+	/**
+	 * Validation nach Laenge 
+	 */
+	this.minValue = function(element, minLength, errorElement, errorMessage){
 		for(var i = 0; i < this.events.length; i++){
 			element[this.events[i]] = function(){
-				if(element.value.length < 3){
-					errorElement.classList.remove("hidden");
-					errorElement.innerHTML = "This name is too short";
+				if(element.value.length < minLength){
+					errorMessage.classList.remove("hidden");
+					errorMessage.innerHTML = "This " + errorElement + " is too short";
+					element.className += " error";
 				}
 				else{
-					errorElement.className += " hidden";
-					errorElement.innerHTML = "";
+					errorMessage.className += " hidden";
+					errorMessage.innerHTML = "";
+					element.classList.remove("error");
 				}
 			}
 		}
 	}
+	/**
+	 * Validation nach Email 
+	*/
+	this.emailValid = function(element, errorMessage){
+		for(var i = 0; i < this.events.length; i++){
+			element[this.events[i]] = function(){
+				if(!validateEmail(element.value)){
+					errorMessage.classList.remove("hidden");
+					errorMessage.innerHTML = "This email is invalid";
+					element.className += " error";
+				}
+				else{
+					errorMessage.className += " hidden";
+					errorMessage.innerHTML = "";
+					element.classList.remove("error");
+				}
+			}
+		}
+	}
+	function validateEmail(email){	//Erhlich gesagt habe ich diese Funktion einfach auf der StackOverflow kopiert.
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	}
 }
 
 var validObj = new Validation();
-validObj.minValue(data.elements.login, 3, data.elements.loginError);
-	
+validObj.minValue(data.elements.login, 3, "login", data.elements.loginError);
+validObj.minValue(data.elements.password, 6, "password", data.elements.passwordError);
+validObj.minValue(data.elements.confirmPassword, 6, "password", data.elements.confirmPasswordError);
+validObj.emailValid(data.elements.email, data.elements.emailError);
