@@ -1,14 +1,71 @@
-
-p{
-	font-family: arial;
-	font-size: 23px;
-	background-color: #F5F5F0;
-	color: black;
-	text-align: left;
-	padding: 10px;
-	margin-bottom: 0px;
-	width: 200px;
+body{
+	margin: 0;
 }
+
+.authForm {
+    width: 248px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 79px;
+}
+
+.header{
+    position: fixed;
+    overflow: hidden;  
+    background-color: #333;
+    text-align: center;
+    height: 60px;
+    width: 100%;
+    top: 0;
+}
+.header ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+
+.header li{
+    float: left;
+}
+.header li a{
+    display: block;
+    color:  #808080;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+}
+
+.header .active{
+    background-color:#333;
+    color: white;
+}
+
+.searchInput[type=text] {
+    width: 200px;
+    float: right;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px;
+    margin-top: 5px;
+}
+.searchButton[type=button]{
+    width: 100px;
+    float: right;
+    box-sizing: border-box;
+    background-color: #333;
+    border-radius: 4px;
+    border: 1px solid #009900;
+    color: #009900;
+    padding: 15px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 input[type=text]{
 	background-color: white;
 	color:  #E6E6D9;
@@ -18,12 +75,20 @@ input[type=text]{
 	width: 200px;
 	border: 1px solid #EBEBE0;
 	border-radius: 6px;
+}
 
+#password{
+	margin-top: 15px;
 }
-input[type=checkbox]{
+/*input[type=checkbox]{
 	margin: 10px;	
+}*/
+.formRemember{
+	margin-left:11px;
+	padding: 10px;
 }
-input[type=sign_in]{
+
+input[type=button]{
 	font-style: sans-serif;
 	background-color: blue;
 	color: white;
@@ -36,7 +101,7 @@ input[type=sign_in]{
 	border: 1px solid #EBEBE0;
 	border-radius: 6px;
 	}
-input[type=sign_in]:hover{
+input[type=button]:hover{
 	background-color: #cce6ff;
 	color:  #00004d;
 	border: 1px solid blue;

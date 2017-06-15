@@ -6,15 +6,26 @@
 	<link rel="stylesheet" type="text/css" href="loginStyle.css">
 </head>
 <body>
-	
+	<div class="header">
+		<ul>
+	  		<li><a href="index.html">Home</a></li>
+	  		<li><a href="registration.html">Registration</a></li>
+	  		<li><a class="active" href="login.html">Login</a></li>
+	  		<li style="float:right">
+	  			<input class="searchButton" type="button" value="Search"> 
+	  			<input class="searchInput"  type="text" name="search" placeholder="Search..">
+			</li>
+		</ul>
+	</div>
 	<div>
 
-		<form action="/action_page.php">
-		 <p>Please sign in</p>
+		<form class="authForm" action="/action_page.php">
 		 <input type="text" id="email" name="email" placeholder="Email address">
 		 <input type="text" id="password" name="password" placeholder="Password">
-		 <input type="checkbox" checked="checked">
+		 <div class="formRemember">
+		 <input id="remember" type="checkbox" checked="checked">
       	 <label>Remember me</label>
+      	 </div>
 		 <input type="button" value="Sign in">
   		</form>
 	</div>
