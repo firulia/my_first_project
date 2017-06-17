@@ -112,23 +112,35 @@ function Validation(){
 				data.elements.emailError.innerHTML = "";
 				data.elements.email.classList.remove("error");
 			}
+			if(data.elements.password.value != data.elements.confirmPassword.value){
+				data.elements.confirmPasswordError.classList.remove("agreement");
+				data.elements.confirmPasswordError.innerHTML = "This password is uncoincident";
+				data.elements.confirmPassword.className += " error";
+				//console.log("psw ist falsch");
+			}
+			else{
+				data.elements.confirmPasswordError.className += " agreement";
+				data.elements.confirmPasswordError.innerHTML = "";
+				data.elements.confirmPassword.classList.remove("error");
+				//console.log("richtiger psw");
+			}
 		}
 	}
 	
 	this.psw = function(element1, element2, errorElement, errorMessage){
 		for(var i = 0; i < this.events.length; i++){
-			element[this.events[i]] = function(){
+			element1[this.events[i]] = function(){
 				if(element1.value != element2.value){
 					errorMessage.classList.remove("agreement");
 					errorMessage.innerHTML = "This " + errorElement + " is uncoincident";
 					element2.className += " error";
-					//console.log("psw ist falsch");
+					console.log("psw ist falsch");
 				}
 				else{
 					errorMessage.className += " agreement";
 					errorMessage.innerHTML = "";
 					element2.classList.remove("error");
-					//console.log("richtiger psw");
+					console.log("richtiger psw");
 				}
 			}
 		}
