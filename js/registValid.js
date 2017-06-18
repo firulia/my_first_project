@@ -21,22 +21,25 @@ for(var key in data.names){
  * also Validation
  */
 function Validation(){ 
+	
 	this.events = ["onchange", "onkeyup", "onkeydown"];
 	/**
 	 * Validation nach Laenge 
 	 */
-	this.minValue = function(element, minLength, errorElement, errorMessage){
+	this.minValue = function(element, element1,minLength, errorElement, errorMessage){
 		for(var i = 0; i < this.events.length; i++){
 			element[this.events[i]] = function(){
 				if(element.value.length < minLength){
 					errorMessage.classList.remove("hidden");
 					errorMessage.innerHTML = "This " + errorElement + " is too short";
 					element.className += " error";
+					element1.className = "readOnly";
 				}
 				else{
 					errorMessage.className += " hidden";
 					errorMessage.innerHTML = "";
 					element.classList.remove("error");
+					element1.classList.remove("readOnly");
 				}
 				
 			}
@@ -46,18 +49,20 @@ function Validation(){
 	/**
 	 * Validation nach Email 
 	*/
-	this.emailValid = function(element, errorMessage){
+	this.emailValid = function(element, element1, errorMessage){
 		for(var i = 0; i < this.events.length; i++){
 			element[this.events[i]] = function(){
 				if(!validateEmail(element.value)){
 					errorMessage.classList.remove("hidden");
 					errorMessage.innerHTML = "This email is invalid";
 					element.className += " error";
+					element1.className = "readOnly";
 				}
 				else{
 					errorMessage.className += " hidden";
 					errorMessage.innerHTML = "";
 					element.classList.remove("error");
+					element1.classList.remove("readOnly");
 				}
 			}
 		}
@@ -73,6 +78,7 @@ function Validation(){
 				data.elements.loginError.classList.remove("hidden");
 				data.elements.loginError.innerHTML = "This field is required";
 				data.elements.login.className += " error";
+				
 			}
 			else{
 				data.elements.loginError.className += " hidden";
@@ -116,31 +122,29 @@ function Validation(){
 				data.elements.confirmPasswordError.classList.remove("agreement");
 				data.elements.confirmPasswordError.innerHTML = "This password is uncoincident";
 				data.elements.confirmPassword.className += " error";
-				//console.log("psw ist falsch");
 			}
 			else{
 				data.elements.confirmPasswordError.className += " agreement";
 				data.elements.confirmPasswordError.innerHTML = "";
 				data.elements.confirmPassword.classList.remove("error");
-				//console.log("richtiger psw");
 			}
 		}
 	}
 	
-	this.psw = function(element1, element2, errorElement, errorMessage){
+	this.psw = function(element1, element2, element3, errorElement, errorMessage){
 		for(var i = 0; i < this.events.length; i++){
 			element1[this.events[i]] = function(){
 				if(element1.value != element2.value){
 					errorMessage.classList.remove("agreement");
 					errorMessage.innerHTML = "This " + errorElement + " is uncoincident";
 					element2.className += " error";
-					console.log("psw ist falsch");
+					element3.className = "readOnly";
 				}
 				else{
 					errorMessage.className += " agreement";
 					errorMessage.innerHTML = "";
 					element2.classList.remove("error");
-					console.log("richtiger psw");
+					element3.classList.remove("readOnly");
 				}
 			}
 		}
@@ -149,9 +153,9 @@ function Validation(){
 
 
 var validObj = new Validation();
-validObj.minValue(data.elements.login, 3, "login", data.elements.loginError);
-validObj.minValue(data.elements.password, 6, "password", data.elements.passwordError);
-validObj.minValue(data.elements.confirmPassword, 6, "password", data.elements.confirmPasswordError);
-validObj.emailValid(data.elements.email, data.elements.emailError);
+validObj.minValue(data.elements.login, data.elements.signUp, 3, "login", data.elements.loginError);
+validObj.minValue(data.elements.password, data.elements.signUp, 6, "password", data.elements.passwordError);
+validObj.minValue(data.elements.confirmPassword, data.elements.signUp, 6, "password", data.elements.confirmPasswordError);
+validObj.emailValid(data.elements.email, data.elements.signUp, data.elements.emailError);
 validObj.signUp(data.elements);
-validObj.psw(data.elements.password, data.elements.confirmPassword, "password",  data.elements.confirmPasswordError);
+validObj.psw(data.elements.password, data.elements.confirmPassword, data.elements.signUp, "password",  data.elements.confirmPasswordError);

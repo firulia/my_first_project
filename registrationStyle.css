@@ -125,3 +125,7 @@ body{
 span{
 	color: #ffb3b3;
 }
+.readOnly{
+	pointer-events: none;
+	background-color: grey !important;
+}
